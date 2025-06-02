@@ -1,0 +1,1 @@
+# cloudexchange.android.adapter-meta
