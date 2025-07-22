@@ -1,34 +1,78 @@
-
 ## 🚀 CloudX Meta Adapter Installation Guide
-### Prerequisite: Get a GitHub Token
-* Go to [GitHub PAT Settings](https://github.com/settings/tokens).
-* Generate a new token with read:packages permission.
-* Use your GitHub username and token in the credentials block below.
 
+### 📦 Compatibility
 
-### 1. Add Adapter Repositories
-Add this Maven repository in your project’s `settings.gradle` or `settings.gradle.kts` file **inside** the `dependencyResolutionManagement.repositories` block:
-```
-maven {
-    url = uri("https://maven.pkg.github.com/cloudx-xenoss/cloudxchange.android.adapter-meta")
-    credentials {
-        username = "<GITHUB_USERNAME>"
-        password = "<GITHUB_TOKEN>"
+#### 🧩 Language Compatibility
+- **Kotlin version**: Built with `1.9.22`
+    - Host apps should use Kotlin `1.9.0+`
+- **Java compatibility**: Compiled to Java 8 bytecode (`jvmTarget = 1.8`)
+    - Fully compatible with Java-based host apps (no Kotlin required)
+
+#### 📱 Android Compatibility
+- **Minimum SDK version**: `21`
+- **Compile SDK version**: `35`
+    - Host apps must set `minSdkVersion >= 21` to use the adapter.
+
+#### 🛠️ Build Compatibility
+- **Gradle version**: `8.5`
+- **Android Gradle Plugin**: `8.2.2`
+    - Host apps using AGP `8.0+` and Gradle `8.5+` are fully supported.
+
+---
+
+### 1. Add Maven Central Repository
+
+In your project’s `settings.gradle` or `settings.gradle.kts`  
+(You likely already have this by default):
+
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 ```
-*You can use environment variables or Gradle properties if preferred, but for quick setup just put your username/token here (not recommended for open source repos).*
 
-### 2. Add Adapter Dependencies
-In your app/module `build.gradle` (or `build.gradle.kts`):
-```
+---
+
+### 2. Add Adapter Dependency
+
+In your app/module `build.gradle` or `build.gradle.kts`:
+
+```kotlin
 dependencies {
-    implementation("com.cloudx.adapter:adapter-meta:v<latest-verion>")
+    implementation("io.cloudx.adapter:adapter-meta:<latest-version>")
 }
 ```
 
-*Replace* *`v<latest-version>`* *with the adapter version you want to use.*
+> Replace `<latest-version>` with the desired version (e.g., `0.0.1`).
+
+---
 
 ### 3. Sync and Build
+
 * Sync your project in Android Studio.
-* CloudX Meta adapter will be automatically downloaded from GitHub Packages.
+* The Meta Adapter will be downloaded automatically from Maven Central.
+
+✅ **That’s it! You’re ready to use the CloudX Meta Adapter.**
+
+---
+
+### ➕ Related Adapters
+
+You may also integrate other CloudX Adapters:
+
+- [Google Adapter](https://github.com/cloudx-xenoss/cloudexchange.android.adapter-google)
+- [CloudX Adapter](https://github.com/cloudx-xenoss/cloudexchange.android.adapter-cloudx)
+- [Mintegral Adapter](https://github.com/cloudx-xenoss/cloudexchange.android.adapter-mintegral)
+
+> Visit each link for setup guides and available versions.
+
+---
+
+## License
+
+This software is licensed under the Elastic License 2.0.  
+See the [LICENSE](./LICENSE) file for details.
