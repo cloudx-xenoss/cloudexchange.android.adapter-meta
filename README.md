@@ -43,7 +43,7 @@ In your app/module `build.gradle` or `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("io.cloudx.adapter:adapter-meta:<latest-version>")
+    implementation("io.cloudx:adapter-meta:<latest-version>")
 }
 ```
 
